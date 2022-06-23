@@ -1,0 +1,61 @@
+
+#!/bin/bash
+sudo su
+yum update -y
+
+
+
+
+
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+conditional playbook
+vim conditional.yml
+--- # conditional playbook
+- hosts: ansible
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: install apache server for debian
+      command: apt-get -y install apache2
+      when: ansible_os_family == "Debian"
+
+    - name: install apache for redhat
+      command: yum -y install httpd
+      when: ansible_os_family == "RedHat"
+
+
+https://github.com/rajakumarguptatechie/terraform/tree/master/terraform-training-synechron
+
+wget -q -0 - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+https://www.youtube.com/watch?v=fpEveXVvKbM&list=PLz0c5JNg5UJZXU5P7EM4EkBFI-JCvYeRL&index=2
+
+
+The first difference is support (as others have mentioned). CloudBees offers enterprise grade support as well as a fully vetted and tested version of Jenkins that will be more stable under various plugins and deployments. You can actually purchase "Support Only" from CloudBees if you are satisfied with your OSS Jenkins deployment and simply want support during upgrades, patching, break/fix, etc.
+
+From a feature perspective, CloudBees brings a lot from an enterprise manageability, scalability, and security standpoint.
+
+Manageability: CloudBees comes with CJOC (CloudBees Jenkins Operations Center) built into the software. This is a single pane of glass management console that allows organizations or large teams to centrally manage the jenkins environment. Things like folders, RBAC, pipeline and master templates, and the ability to rapidly spin up/tear down a containerized jenkins master are all managed from this single console.
+
+Scaleability: CloudBees leverages Kubernetes to provide organizations with the ability to elastically scale Jenkins environments as needed. With CloudBees, your oganization can move away from a single "Monolithic"/"Frankenstein" master and into a multi-master and distributed pipeline architecture. This greatly reduces upgrade and administration complexity. This also eliminates the risk from a single point of failure that a monolithic architecture exposes.
+
+Security: CloudBees allows organizations to install Roll Based Access Control within Jenkins. This keeps users from accidentally or intentionally accessing repos that they shouldn't be allowed to interact with. CloudBees also provides "folders" to segregate specific job executions onto specific agents. Lastly CloudBees allows organizations to create pipeline templates and associated plugins for each team. These templates can be as rigid or loose as desired per the organizations security policies.
+
+CloudBees is regularly adding enhancements to further differentiate themselves from Jenkins Open Source and make themselves more appealing to large enterprise requirements.
+
+On top of the above, CloudBees has developed a presentation layer that rides on top of Jenkins for SDLC pipeline, CD monitoring, and metric tracking called DevOptics.
+
+Today I done with the freestyle project on cloudbee feature managment configuration
+Also I have done with clodbees connect with Github to activate the configuration I have created one repository but I am also facing the same issue, I am also not able to remove the github repository.
+Besides that I have explored more on the cloudbees by watching the youtube videos.
+
+
+To activate Configuration as Code with GitHub:
+
+Create an empty repository on GitHub.
+
+Connect CloudBees Feature Management to the GitHub repository as follows:
+
+From the CloudBees Feature Management Home page, from the left navigation pane, select App Settings, and then select the Integrations tab.
